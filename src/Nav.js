@@ -9,7 +9,7 @@ class Nav extends Component {
         const { categories, products } = this.props;
         const newCategory = { number: Math.floor(Math.random() * 1000) };
  //       console.log(newCategory)
-        return(
+        return (
             <div>
                 <ul>
                     <li>

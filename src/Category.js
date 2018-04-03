@@ -13,12 +13,12 @@ class Category extends Component {
             } 
         }
     }
-    componentWillReceiveProps(nextProps) {
+/*    componentWillReceiveProps(nextProps) {
         this.setState({ 
             number: nextProps.category ? nextProps.category.number : ''
         })
     }
-
+*/
     render() {
         const { category, productsInCategory, delCategory, saveProduct } = this.props;
         const { number, newProduct } = this.state;
@@ -27,7 +27,7 @@ class Category extends Component {
             <div>
                 <h1>{number}-Category </h1>
                 <button onClick={()=> delCategory(category)}> Delete Category  </button>
-                <button onClick = {()=> saveProduct(newProduct)}> Add Product </button>
+                <button onClick={()=> saveProduct(newProduct)}> Add Product </button>
                 <ul>
                         {
                             productsInCategory.map(product => {

@@ -43,6 +43,16 @@ app.delete('/api/categories/:id', (req, res, next) => {
         .catch(next);
 })
 
+app.delete('/api/products/:id', (req, res, next) => {
+    Product.findById(req.params.id)
+ //       .then(product => console.log(product))
+        .then(product => {
+            return product.destroy()
+        })
+        .then(() => res.sendStatus(204))
+        .catch(next);
+})
+
 const port = process.env.PORT || 3000;
 app.listen(port,() => console.log(`listening on ${port}`));
 

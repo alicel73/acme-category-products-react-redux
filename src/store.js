@@ -7,6 +7,7 @@ const SET_PRODUCTS = 'SET_PRODUCTS';
 const CREATE_CATEGORY = 'CREATE_CATEGORY';
 const DELETE_CATEGORY = 'DELETE_CATEGORY';
 const CREATE_PRODUCT = 'CREATE_PRODUCT';
+const DELETE_PRODUCT = 'DELETE PRODUCT'
 
 const categoriesReducer = (state = [], action) => {
     switch(action.type) {
@@ -33,7 +34,9 @@ const productsReducer = (state = [], action) => {
             break;
         case DELETE_CATEGORY:
             state = state.filter(product => product.categoryId !== action.deletedCategory.id);
-            break;    
+            break;
+        case DELETE_PRODUCT:
+            state = state.filter(product => product.id !== action.deletedProduct.id);    
     }
     return state;
 }
@@ -81,7 +84,6 @@ const saveCategory = (category) => {
 const deleteCategory = (category, history) => {
     return (dispatch) => {
         return axios.delete(`/api/categories/${category.id}`)
-            .then (result => result.data)
             .then (() => dispatch({
                 type: DELETE_CATEGORY,
                 deletedCategory: category
@@ -103,10 +105,22 @@ const saveProduct = (product) => {
     }
 }
 
+const deleteProduct = (product, history) => {
+    return (dispatch) => {
+        return axios.delete(`/api/products/${product.id}`)
+            .then (() => dispatch({
+                type: DELETE_PRODUCT,
+                deletedProduct: product
+            }))
+            .then(() => {
+                history.push('/')
+            })
+    }
+}
 
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
 export default store;
 
-export { loadCategories, loadProducts, saveCategory, deleteCategory, saveProduct };
+export { loadCategories, loadProducts, saveCategory, deleteCategory, saveProduct, deleteProduct };
