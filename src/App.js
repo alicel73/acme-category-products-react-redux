@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Nav from './Nav';
@@ -21,8 +21,10 @@ class App extends Component {
                     <Nav /> 
                     <Route path='/' exact component={ Home } />
                     <Route path='/products' exact component={ Products } />
-                    <Route path='/categories/:id' exact render={({match, history}) => 
-                        <Category categoryId={ match.params.id*1 } history={ history }/> } />
+
+                        <Route path='/categories/:id' exact render={({match, history}) => 
+                            <Category categoryId={ match.params.id*1 } history={ history }/> } />
+
                 </div>
             </Router>
 

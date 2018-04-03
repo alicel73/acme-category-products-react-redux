@@ -13,12 +13,12 @@ class Category extends Component {
             } 
         }
     }
-/*    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps) {
         this.setState({ 
             number: nextProps.category ? nextProps.category.number : ''
         })
     }
-*/
+
     render() {
         const { category, productsInCategory, delCategory, saveProduct } = this.props;
         const { number, newProduct } = this.state;
