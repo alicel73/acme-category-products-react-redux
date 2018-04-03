@@ -9,7 +9,8 @@ const Category = conn.define('category', {
     number: Sequelize.INTEGER
 })
 
-Product.belongsTo(Category, { onDelete: 'cascade' });
+//Product.belongsTo(Category, { onDelete: 'cascade' });
+Product.belongsTo(Category);
 Category.hasMany(Product);
 
 const sync = () => {

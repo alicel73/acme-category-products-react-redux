@@ -4,27 +4,16 @@ import { Link } from 'react-router-dom';
 import { saveCategory } from './store';
 
 class Nav extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            products: this.props.products ? this.props.products : []
-        }
-    }
-    componentWillReceiveProps(nextProps) {
-        this.setState({ products: nextProps.products ? nextProps.products : [] })
-    }
+
     render() {
-        const { products } = this.state;
-        const { categories } = this.props;
+        const { categories, products } = this.props;
         const newCategory = { number: Math.floor(Math.random() * 1000) };
-        console.log(newCategory)
+ //       console.log(newCategory)
         return(
             <div>
                 <ul>
                     <li>
-                        
-                            <button onClick = {() => this.props.saveCategory(newCategory)}>Create Category</button>
-
+                         <button onClick = {() => this.props.saveCategory(newCategory)}>Create Category</button>
                     </li>
                     <li>
                         <Link to = '/products'>All Products ({ products.length })</Link>            

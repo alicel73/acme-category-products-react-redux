@@ -4,6 +4,8 @@ const path = require('path');
 const db = require('./db');
 const { Product, Category } = db.models;
 
+app.use(require('body-parser').json());
+
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 
 app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')));

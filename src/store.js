@@ -31,6 +31,9 @@ const productsReducer = (state = [], action) => {
         case CREATE_PRODUCT: 
             state = [...state, action.newProduct];
             break;
+        case DELETE_CATEGORY:
+            state = state.filter(product => product.categoryId !== action.deletedCategory.id);
+            break;    
     }
     return state;
 }

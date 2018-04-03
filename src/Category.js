@@ -7,7 +7,6 @@ class Category extends Component {
         super(props);
         this.state = {
             number: this.props.category ? this.props.category.number : '',
-            products: this.props.products ? this.props.products : [],
             newProduct: {
                 number: Math.floor(Math.random() * 1000),
                 categoryId: this.props.category.id     
@@ -16,14 +15,14 @@ class Category extends Component {
     }
     componentWillReceiveProps(nextProps) {
         this.setState({ 
-            number: nextProps.category ? nextProps.category.number : '',
-            products: nextProps.products? nextProps.products : [] 
+            number: nextProps.category ? nextProps.category.number : ''
         })
     }
 
     render() {
         const { category, productsInCategory, delCategory, saveProduct } = this.props;
         const { number, newProduct } = this.state;
+
         return (
             <div>
                 <h1>{number}-Category </h1>
@@ -59,6 +58,5 @@ const mapDispatchToProps = (dispatch, { history }) => {
         saveProduct: (newProduct) => dispatch(saveProduct(newProduct))
     }
 }
-
-
 export default connect(mapStateToProps, mapDispatchToProps)(Category);
+

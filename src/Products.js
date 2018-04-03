@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Products = ({ products }) => {
+const Products = ({ products, categories }) => {
     return (
         <ul>
             {
                 products.map(product => {
-                   return (
-                       <li key= { product.id }> { product.number }</li>
+                    return (
+                        <li key= { product.id }> { product.number }-Product
+                            { } { product.categoryId }-Category
+                            <button>Delete Product</button>
+                        </li>
                    )
                 })
             }
@@ -18,9 +21,10 @@ const Products = ({ products }) => {
 
 
 
-const mapStateToProps = ({ products }) => {
+const mapStateToProps = ({ products, categories }) => {
     return {
-        products
+        products,
+        categories
     };
 };
 

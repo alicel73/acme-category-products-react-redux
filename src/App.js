@@ -20,7 +20,7 @@ class App extends Component {
                 <div>
                     <Nav /> 
                     <Route path='/' exact component={ Home } />
-                    <Route path='/products' exact component={ Products } />                   
+                    <Route path='/products' exact component={ Products } />
                     <Route path='/categories/:id' exact render={({match, history}) => 
                         <Category categoryId={ match.params.id*1 } history={ history }/> } />
                 </div>
